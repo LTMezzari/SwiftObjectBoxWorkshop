@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import ObjectBox
 
-class Person {
-    var id: CLong = 0
-    var name: String?
+class Person: Entity {
+    var id: Id<Person> = 0
+    var name: String = ""
     var age: Int = 0
+    
+    required init() {
+        
+    }
 }

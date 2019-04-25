@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import ObjectBox
 
 class MainControllerViewModel {
     
-    var persons: [Person] = []
-    var personId: CLong = 0
+    let personsBox: Box<Person>?
+    
+    var persons: [Person]
+    var personId: Id<Person> = 0
+    
+    init() {
+        personsBox = BoxUtils.getBox()
+        persons = personsBox?.all() ?? []
+    }
     
     func save(_ isEditing: Bool, _ name: String, _ age: Int, _ success: (Int, Bool) -> Void, _ error: (String) -> Void) {
         if !name.isEmpty && age > 0 {
@@ -28,6 +36,7 @@ class MainControllerViewModel {
                 
                 if index != -1 {
                     persons[index] = person
+                    save(person)
                     success(index, false)
                 }
                 return
@@ -35,7 +44,16 @@ class MainControllerViewModel {
             
             let index: Int = persons.count
             persons.append(person)
+            save(person)
             success(index, isEmpty)
+        }
+    }
+    
+    private func save(_ person: Person) {
+        do {
+            try personsBox?.put(person)
+        } catch _ {
+            
         }
     }
 }

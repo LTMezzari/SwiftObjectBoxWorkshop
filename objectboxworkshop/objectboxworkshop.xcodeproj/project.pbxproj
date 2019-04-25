@@ -20,6 +20,7 @@
 		543A55E72271F7EB002F8DF5 /* MainControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A55E62271F7EB002F8DF5 /* MainControllerViewModel.swift */; };
 		543A55EA22721009002F8DF5 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A55E922721009002F8DF5 /* FilterViewController.swift */; };
 		543A55EC227210A9002F8DF5 /* FilterControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A55EB227210A9002F8DF5 /* FilterControllerViewModel.swift */; };
+		543A55EF22722326002F8DF5 /* BoxUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A55EE22722326002F8DF5 /* BoxUtils.swift */; };
 		719C0D89713E3AC4E01DF45F /* Pods_objectboxworkshop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC6DEB1CA7DB6C44DC31BC4 /* Pods_objectboxworkshop.framework */; };
 		8242782EF9E5FBDE580512A7 /* EntityInfo.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA1B7CBB865B25A7C47E47A /* EntityInfo.generated.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		543A55E62271F7EB002F8DF5 /* MainControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainControllerViewModel.swift; sourceTree = "<group>"; };
 		543A55E922721009002F8DF5 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		543A55EB227210A9002F8DF5 /* FilterControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterControllerViewModel.swift; sourceTree = "<group>"; };
+		543A55EE22722326002F8DF5 /* BoxUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		543A55A62271EBF2002F8DF5 /* objectboxworkshop */ = {
 			isa = PBXGroup;
 			children = (
+				543A55ED227222B0002F8DF5 /* Utils */,
 				543A55DA2271ED93002F8DF5 /* Model */,
 				543A55D62271EC48002F8DF5 /* Flow */,
 				543A55D52271EC33002F8DF5 /* Resources */,
@@ -209,6 +212,14 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
+		543A55ED227222B0002F8DF5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				543A55EE22722326002F8DF5 /* BoxUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		9EB5D73CF50ABF141D2139BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +234,6 @@
 				1E305EA2225F814EEA55A8D0 /* Pods-objectboxworkshop.debug.xcconfig */,
 				3775BA9E8C47F7E96EA35118 /* Pods-objectboxworkshop.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -232,7 +242,6 @@
 			children = (
 				1FA1B7CBB865B25A7C47E47A /* EntityInfo.generated.swift */,
 			);
-			name = generated;
 			path = generated;
 			sourceTree = "<group>";
 		};
@@ -444,6 +453,7 @@
 				543A55E32271F46D002F8DF5 /* PersonFormTableViewCell.swift in Sources */,
 				543A55A82271EBF2002F8DF5 /* AppDelegate.swift in Sources */,
 				8242782EF9E5FBDE580512A7 /* EntityInfo.generated.swift in Sources */,
+				543A55EF22722326002F8DF5 /* BoxUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

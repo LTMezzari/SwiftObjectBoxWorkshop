@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    let viewModel: MainControllerViewModel = MainControllerViewModel()
+    lazy var viewModel: MainControllerViewModel = MainControllerViewModel()
     
     var mainCellType: CellType {
         if viewModel.persons.isEmpty {

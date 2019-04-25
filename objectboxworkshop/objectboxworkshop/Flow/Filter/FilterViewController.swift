@@ -17,12 +17,17 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var periodEndTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
-    let viewModel: FilterControllerViewModel = FilterControllerViewModel()
+    lazy var viewModel: FilterControllerViewModel = FilterControllerViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     @IBAction func didPressSearch(_ sender: Any) {
+        let identifier = identifierTextField.text ?? ""
+        let name = nameTextField.text ?? ""
+        let age = Int(ageTextField.text ?? "0")
+        let startPeriod = Int(periodStartTextField.text ?? "0")
+        let endPeriod = Int(periodEndTextField.text ?? "")
     }
 }
