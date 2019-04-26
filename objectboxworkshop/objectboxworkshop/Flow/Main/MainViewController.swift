@@ -15,6 +15,16 @@ enum CellType {
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var backBarButton: UIBarButtonItem! {
+        didSet {
+            hideBarButton(backBarButton)
+        }
+    }
+    @IBOutlet weak var deleteBarButton: UIBarButtonItem! {
+        didSet{
+            hideBarButton(deleteBarButton)
+        }
+    }
     @IBOutlet weak var filterBarButton: UIBarButtonItem!
     
     @IBOutlet weak var closeBarButton: UIBarButtonItem! {
@@ -44,6 +54,8 @@ class MainViewController: UIViewController {
     
     var isEditingPerson: Bool = false
     
+    var isInSelectionMode: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -52,6 +64,16 @@ class MainViewController: UIViewController {
         handleFilteBarButton(false)
         viewModel.loadPersons()
         mainTableView.reloadData()
+    }
+    
+    @IBAction func didPressBackButton(_ sender: Any) {
+        viewModel.unmarkPersons()
+        turnSelectionModeOff()
+    }
+    
+    @IBAction func didPressDeleteButton(_ sender: Any) {
+        viewModel.deletePersons()
+        turnSelectionModeOff()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,6 +104,13 @@ class MainViewController: UIViewController {
     private func showBarButton(_ barButton: UIBarButtonItem, _ title: String) {
         barButton.title = title
         barButton.isEnabled = true
+    }
+    
+    private func turnSelectionModeOff() {
+        hideBarButton(backBarButton)
+        hideBarButton(deleteBarButton)
+        isInSelectionMode = false
+        mainTableView.reloadData()
     }
 }
 
@@ -126,6 +155,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 let person = viewModel.persons[indexPath.row]
                 personCell.delegate = self
                 personCell.person = person
+                personCell.checkView.isHidden = !isInSelectionMode
                 
                 return personCell
             }
@@ -160,16 +190,33 @@ extension MainViewController: PersonFormTableViewCellDelegate, PersonTableViewCe
         })
     }
     
-    func didPressCell(_ person: Person) {
+    func didPressCell(_ personCell: PersonTableViewCell, _ person: Person) {
         guard let cell = formTableViewCell else {
             return
         }
         
-        isEditingPerson = true
-        viewModel.personId = person.id
-        cell.formTitleLabel.text = "Edit Person"
-        cell.nameTextField.text = person.name
-        cell.ageTextField.text = String(person.age)
+        if isInSelectionMode {
+            let isChecked: Bool = person.isSelected
+            person.isSelected = !isChecked
+            personCell.checkView.isChecked = !isChecked
+        } else {
+            isEditingPerson = true
+            viewModel.personId = person.id
+            cell.formTitleLabel.text = "Edit Person"
+            cell.nameTextField.text = person.name
+            cell.ageTextField.text = String(person.age)
+        }
+    }
+    
+    func didLongPressCell() {
+        if isInSelectionMode {
+            return
+        }
+        
+        isInSelectionMode = true
+        showBarButton(backBarButton, "Back")
+        showBarButton(deleteBarButton, "Delete")
+        mainTableView.reloadData()
     }
 }
 

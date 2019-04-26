@@ -14,6 +14,9 @@ class Person: Entity {
     var name: String = ""
     var age: Int = 0
     
+    // objectbox: transient
+    var isSelected: Bool = false
+    
     required init() {
         
     }

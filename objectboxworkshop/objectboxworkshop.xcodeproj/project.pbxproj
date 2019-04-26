@@ -21,6 +21,9 @@
 		543A55EA22721009002F8DF5 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A55E922721009002F8DF5 /* FilterViewController.swift */; };
 		543A55EC227210A9002F8DF5 /* FilterControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A55EB227210A9002F8DF5 /* FilterControllerViewModel.swift */; };
 		543A55EF22722326002F8DF5 /* BoxUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A55EE22722326002F8DF5 /* BoxUtils.swift */; };
+		54F9C28722733B1100360B26 /* UICheckView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F9C28622733B1100360B26 /* UICheckView.xib */; };
+		54F9C28922733C2100360B26 /* UICheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F9C28822733C2100360B26 /* UICheckView.swift */; };
+		54F9C28C2273405A00360B26 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F9C28B2273405A00360B26 /* UIImageExtensions.swift */; };
 		719C0D89713E3AC4E01DF45F /* Pods_objectboxworkshop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC6DEB1CA7DB6C44DC31BC4 /* Pods_objectboxworkshop.framework */; };
 		8242782EF9E5FBDE580512A7 /* EntityInfo.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA1B7CBB865B25A7C47E47A /* EntityInfo.generated.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +70,9 @@
 		543A55E922721009002F8DF5 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		543A55EB227210A9002F8DF5 /* FilterControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterControllerViewModel.swift; sourceTree = "<group>"; };
 		543A55EE22722326002F8DF5 /* BoxUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxUtils.swift; sourceTree = "<group>"; };
+		54F9C28622733B1100360B26 /* UICheckView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UICheckView.xib; sourceTree = "<group>"; };
+		54F9C28822733C2100360B26 /* UICheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICheckView.swift; sourceTree = "<group>"; };
+		54F9C28B2273405A00360B26 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +127,8 @@
 		543A55A62271EBF2002F8DF5 /* objectboxworkshop */ = {
 			isa = PBXGroup;
 			children = (
+				54F9C28A2273403A00360B26 /* Extensions */,
+				54F9C2842273367D00360B26 /* Components */,
 				543A55ED227222B0002F8DF5 /* Utils */,
 				543A55DA2271ED93002F8DF5 /* Model */,
 				543A55D62271EC48002F8DF5 /* Flow */,
@@ -218,6 +226,31 @@
 				543A55EE22722326002F8DF5 /* BoxUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		54F9C2842273367D00360B26 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				54F9C2852273369900360B26 /* CheckView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		54F9C2852273369900360B26 /* CheckView */ = {
+			isa = PBXGroup;
+			children = (
+				54F9C28622733B1100360B26 /* UICheckView.xib */,
+				54F9C28822733C2100360B26 /* UICheckView.swift */,
+			);
+			path = CheckView;
+			sourceTree = "<group>";
+		};
+		54F9C28A2273403A00360B26 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				54F9C28B2273405A00360B26 /* UIImageExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		9EB5D73CF50ABF141D2139BF /* Frameworks */ = {
@@ -355,6 +388,7 @@
 				543A55B22271EBF3002F8DF5 /* LaunchScreen.storyboard in Resources */,
 				543A55AF2271EBF3002F8DF5 /* Assets.xcassets in Resources */,
 				543A55AD2271EBF2002F8DF5 /* Main.storyboard in Resources */,
+				54F9C28722733B1100360B26 /* UICheckView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +481,8 @@
 				543A55EC227210A9002F8DF5 /* FilterControllerViewModel.swift in Sources */,
 				543A55EA22721009002F8DF5 /* FilterViewController.swift in Sources */,
 				543A55DD2271F334002F8DF5 /* Person.swift in Sources */,
+				54F9C28C2273405A00360B26 /* UIImageExtensions.swift in Sources */,
+				54F9C28922733C2100360B26 /* UICheckView.swift in Sources */,
 				543A55AA2271EBF2002F8DF5 /* MainViewController.swift in Sources */,
 				543A55E02271F44B002F8DF5 /* PersonTableViewCell.swift in Sources */,
 				543A55E72271F7EB002F8DF5 /* MainControllerViewModel.swift in Sources */,

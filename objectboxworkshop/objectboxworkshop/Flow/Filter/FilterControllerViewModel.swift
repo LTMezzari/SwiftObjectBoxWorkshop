@@ -13,16 +13,16 @@ class FilterControllerViewModel {
     
     lazy var personsBox: Box<Person>? = BoxUtils.getBox()
     
-    func filter(_ identifier: String, _ name: String, _ age: Int, _ startPeriod: Int, _ endPeriod: Int, _ success: ([Person]) -> Void) {
+    func filter(_ identifier: UInt64, _ name: String, _ age: Int, _ startPeriod: Int, _ endPeriod: Int, _ success: ([Person]) -> Void) {
         guard let box = personsBox else {
             return
         }
         
         let query: Query<Person>
         
-        if (!identifier.isEmpty) {
+        if (identifier > 0) {
             query = box.query({
-                return Person.id.isEqual(to: EntityId())
+                return Person.id.isEqual(to: identifier)
             })
         } else {
             query = box.query({

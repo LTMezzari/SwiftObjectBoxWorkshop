@@ -60,4 +60,27 @@ class MainControllerViewModel {
             
         }
     }
+    
+    func unmarkPersons() {
+        for person in persons {
+            person.isSelected = false
+        }
+    }
+    
+    func deletePersons() {
+        let markedPersons = persons.filter() { person in
+            return person.isSelected == true
+        }
+        
+        if !markedPersons.isEmpty {
+            do {
+                try personsBox?.remove(markedPersons)
+                persons = persons.filter() { person in
+                    return person.isSelected == false
+                }
+            } catch _ {
+                
+            }
+        }
+    }
 }

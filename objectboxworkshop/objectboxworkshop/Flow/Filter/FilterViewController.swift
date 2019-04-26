@@ -30,7 +30,7 @@ class FilterViewController: UIViewController {
     }
 
     @IBAction func didPressSearch(_ sender: Any) {
-        let identifier = identifierTextField.text ?? ""
+        let identifier = UInt64(identifierTextField.text ?? "0") ?? 0
         let name = nameTextField.text ?? ""
         let age = Int(ageTextField.text ?? "0") ?? 0
         let startPeriod = Int(periodStartTextField.text ?? "0") ?? 0

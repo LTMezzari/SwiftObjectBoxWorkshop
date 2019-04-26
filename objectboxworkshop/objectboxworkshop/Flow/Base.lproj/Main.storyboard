@@ -121,18 +121,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnG-U8-1IJ">
-                                                    <rect key="frame" x="15" y="19" width="345" height="15.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LuN-FR-vfa" customClass="UICheckView" customModule="objectboxworkshop" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="8" width="30" height="26.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="SDE-EE-IGX"/>
+                                                    </constraints>
+                                                </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3b-lE-zTR">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <connections>
                                                         <action selector="didPressCell:" destination="Bhb-tI-4H0" eventType="touchUpInside" id="t5c-as-f88"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnG-U8-1IJ">
+                                                    <rect key="frame" x="15" y="19" width="345" height="15.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJd-3O-3ip">
                                                     <rect key="frame" x="0.0" y="42.5" width="375" height="1"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -143,6 +150,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="c3b-lE-zTR" firstAttribute="centerX" secondItem="hKW-Jz-VRV" secondAttribute="centerX" id="8PR-6R-bUx"/>
+                                                <constraint firstItem="cJd-3O-3ip" firstAttribute="top" secondItem="LuN-FR-vfa" secondAttribute="bottom" constant="8" id="B8a-Fh-8P3"/>
                                                 <constraint firstItem="MnG-U8-1IJ" firstAttribute="leading" secondItem="hKW-Jz-VRV" secondAttribute="leadingMargin" id="CoI-rG-NdF"/>
                                                 <constraint firstItem="c3b-lE-zTR" firstAttribute="height" secondItem="hKW-Jz-VRV" secondAttribute="height" id="GiR-Pl-MYZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="MnG-U8-1IJ" secondAttribute="trailing" id="H1C-kO-3H6"/>
@@ -151,12 +159,15 @@
                                                 <constraint firstItem="MnG-U8-1IJ" firstAttribute="top" secondItem="hKW-Jz-VRV" secondAttribute="topMargin" constant="8" id="SAB-vB-3mh"/>
                                                 <constraint firstAttribute="trailing" secondItem="cJd-3O-3ip" secondAttribute="trailing" id="XEf-A4-A24"/>
                                                 <constraint firstItem="cJd-3O-3ip" firstAttribute="top" secondItem="MnG-U8-1IJ" secondAttribute="bottom" constant="8" id="ffH-RN-ROm"/>
+                                                <constraint firstItem="LuN-FR-vfa" firstAttribute="top" secondItem="hKW-Jz-VRV" secondAttribute="top" constant="8" id="hGv-sp-9uh"/>
                                                 <constraint firstItem="c3b-lE-zTR" firstAttribute="centerY" secondItem="hKW-Jz-VRV" secondAttribute="centerY" id="hdx-O0-vnq"/>
                                                 <constraint firstItem="cJd-3O-3ip" firstAttribute="leading" secondItem="hKW-Jz-VRV" secondAttribute="leading" id="jw4-nY-7wS"/>
+                                                <constraint firstItem="LuN-FR-vfa" firstAttribute="leading" secondItem="hKW-Jz-VRV" secondAttribute="leading" constant="20" symbolic="YES" id="t2o-QA-bx7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellButton" destination="c3b-lE-zTR" id="c7G-jV-x4P"/>
+                                            <outlet property="checkView" destination="LuN-FR-vfa" id="wq6-bB-WZS"/>
                                             <outlet property="nameLabel" destination="MnG-U8-1IJ" id="xo7-G2-rTI"/>
                                         </connections>
                                     </tableViewCell>
@@ -172,7 +183,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Object-Box Workshop" id="0YT-4g-7g3">
+                    <navigationItem key="navigationItem" title="Workshop" id="0YT-4g-7g3">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Back" id="vbY-ch-I6H">
+                                <connections>
+                                    <action selector="didPressBackButton:" destination="BYZ-38-t0r" id="tpt-RE-eGm"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Delete" id="JG5-Mr-8fg">
+                                <connections>
+                                    <action selector="didPressDeleteButton:" destination="BYZ-38-t0r" id="yXi-im-Oze"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="Filter" id="Rcc-hG-X33">
                                 <connections>
@@ -187,7 +210,9 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="backBarButton" destination="vbY-ch-I6H" id="OVJ-JV-gak"/>
                         <outlet property="closeBarButton" destination="lUL-3i-EE1" id="rTQ-Ic-vLD"/>
+                        <outlet property="deleteBarButton" destination="JG5-Mr-8fg" id="XE1-6l-IJd"/>
                         <outlet property="filterBarButton" destination="Rcc-hG-X33" id="6DZ-NO-yui"/>
                         <outlet property="mainTableView" destination="Vnc-vj-0x2" id="aLv-7A-BP9"/>
                     </connections>
