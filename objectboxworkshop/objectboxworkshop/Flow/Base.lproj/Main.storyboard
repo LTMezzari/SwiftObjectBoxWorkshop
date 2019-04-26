@@ -173,13 +173,22 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Object-Box Workshop" id="0YT-4g-7g3">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="Rcc-hG-X33">
-                            <connections>
-                                <segue destination="bDG-3e-Iau" kind="show" id="qr9-BV-gX3"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Filter" id="Rcc-hG-X33">
+                                <connections>
+                                    <segue destination="bDG-3e-Iau" kind="show" identifier="goToFilter" id="qr9-BV-gX3"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Close" id="lUL-3i-EE1">
+                                <connections>
+                                    <action selector="didPressCloseButton:" destination="BYZ-38-t0r" id="rw5-gH-r9g"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="closeBarButton" destination="lUL-3i-EE1" id="rTQ-Ic-vLD"/>
+                        <outlet property="filterBarButton" destination="Rcc-hG-X33" id="6DZ-NO-yui"/>
                         <outlet property="mainTableView" destination="Vnc-vj-0x2" id="aLv-7A-BP9"/>
                     </connections>
                 </viewController>

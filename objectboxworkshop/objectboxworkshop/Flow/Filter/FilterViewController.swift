@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FilterViewControllerDelegate {
+    func onItemsFiltered(_ persons: [Person])
+}
+
 class FilterViewController: UIViewController {
     
     @IBOutlet weak var identifierTextField: UITextField!
@@ -18,6 +22,8 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     
     lazy var viewModel: FilterControllerViewModel = FilterControllerViewModel()
+    
+    var delegate: FilterViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +32,13 @@ class FilterViewController: UIViewController {
     @IBAction func didPressSearch(_ sender: Any) {
         let identifier = identifierTextField.text ?? ""
         let name = nameTextField.text ?? ""
-        let age = Int(ageTextField.text ?? "0")
-        let startPeriod = Int(periodStartTextField.text ?? "0")
-        let endPeriod = Int(periodEndTextField.text ?? "")
+        let age = Int(ageTextField.text ?? "0") ?? 0
+        let startPeriod = Int(periodStartTextField.text ?? "0") ?? 0
+        let endPeriod = Int(periodEndTextField.text ?? "0") ?? 0
+        
+        viewModel.filter(identifier, name, age, startPeriod, endPeriod) { (persons) in
+            self.delegate?.onItemsFiltered(persons)
+            navigationController?.popViewController(animated: true)
+        }
     }
 }

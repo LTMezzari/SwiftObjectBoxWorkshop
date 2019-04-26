@@ -15,6 +15,14 @@ enum CellType {
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var filterBarButton: UIBarButtonItem!
+    
+    @IBOutlet weak var closeBarButton: UIBarButtonItem! {
+        didSet {
+            hideBarButton(closeBarButton)
+        }
+    }
+    
     @IBOutlet weak var mainTableView: UITableView! {
         didSet{
             mainTableView.dataSource = self
@@ -39,8 +47,42 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func didPressCloseButton(_ sender: Any) {
+        handleFilteBarButton(false)
+        viewModel.loadPersons()
+        mainTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToFilter" {
+            guard let controller = segue.destination as? FilterViewController else {
+                return
+            }
+            
+            controller.delegate = self
+        }
+    }
 
-
+    private func handleFilteBarButton(_ isFiltering: Bool) {
+        if isFiltering {
+            hideBarButton(filterBarButton)
+            showBarButton(closeBarButton, "Close")
+        } else {
+            hideBarButton(closeBarButton)
+            showBarButton(filterBarButton, "Filter")
+        }
+    }
+    
+    private func hideBarButton(_ barButton: UIBarButtonItem) {
+        barButton.title = ""
+        barButton.isEnabled = false
+    }
+    
+    private func showBarButton(_ barButton: UIBarButtonItem, _ title: String) {
+        barButton.title = title
+        barButton.isEnabled = true
+    }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -125,7 +167,16 @@ extension MainViewController: PersonFormTableViewCellDelegate, PersonTableViewCe
         
         isEditingPerson = true
         viewModel.personId = person.id
+        cell.formTitleLabel.text = "Edit Person"
         cell.nameTextField.text = person.name
         cell.ageTextField.text = String(person.age)
+    }
+}
+
+extension MainViewController: FilterViewControllerDelegate {
+    func onItemsFiltered(_ persons: [Person]) {
+        viewModel.persons = persons
+        handleFilteBarButton(true)
+        mainTableView.reloadData()
     }
 }

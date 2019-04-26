@@ -37,6 +37,7 @@ class PersonFormTableViewCell: UITableViewCell {
             return
         }
         
+        formTitleLabel.text = "Add Person"
         nameTextField.text = ""
         ageTextField.text = ""
         delegate?.didPressSave(name, age)

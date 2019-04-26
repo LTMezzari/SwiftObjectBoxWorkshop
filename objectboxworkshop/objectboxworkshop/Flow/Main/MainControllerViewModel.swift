@@ -13,11 +13,15 @@ class MainControllerViewModel {
     
     let personsBox: Box<Person>?
     
-    var persons: [Person]
+    var persons: [Person] = []
     var personId: Id<Person> = 0
     
     init() {
         personsBox = BoxUtils.getBox()
+        loadPersons()
+    }
+    
+    func loadPersons() {
         persons = personsBox?.all() ?? []
     }
     
